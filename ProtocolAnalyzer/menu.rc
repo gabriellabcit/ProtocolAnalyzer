@@ -1,0 +1,70 @@
+#include "resource.h"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+MYMENU MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Help",                       IDM_HELP
+        MENUITEM "&Exit",                       IDM_EXIT
+    END
+	POPUP "&Mode"
+	BEGIN
+	MENUITEM "&Client",							IDM_CLIENT
+	MENUITEM "&Server",							IDM_SERVER
+	END
+    POPUP "&Transfer"
+    BEGIN
+        MENUITEM "Transfer data",				IDM_TRANS
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_TRANSDIA DIALOGEX 0, 0, 311, 207
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Transfer Data"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,198,186,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,252,186,50,14
+    EDITTEXT        IDC_HOSTEDIT,62,15,232,14,ES_AUTOHSCROLL
+    LTEXT           "Server IP:",IDC_HOSTLABEL,21,18,40,8
+    GROUPBOX        "Protocol",-1,225,39,70,61
+    CONTROL         "TCP",IDC_TCPRADIO,"Button",BS_AUTORADIOBUTTON,240,53,38,10
+    CONTROL         "UDP",IDC_UDPRADIO,"Button",BS_AUTORADIOBUTTON,239,74,38,10
+    LTEXT           "Port:",IDC_PORTLABEL,21,41,40,8
+    LTEXT           "Packet Size:",IDC_PSIZELABEL,21,65,40,8
+	EDITTEXT        IDC_REPEDIT, 63, 86, 40, 14, ES_AUTOHSCROLL
+    LTEXT           "Repetition:",IDC_REPLABEL,21,89,40,8
+    EDITTEXT        IDC_PORTEDIT,63,38,40,14,ES_AUTOHSCROLL
+	EDITTEXT        IDC_PSIZEEDIT, 63,64, 40, 14, ES_AUTOHSCROLL
+    GROUPBOX        "Source",-1,17,110,280,63
+    CONTROL         "File",IDC_FILERADIO,"Button",BS_AUTORADIOBUTTON,31,126,38,10
+    CONTROL         "Random",IDC_RANDRADIO,"Button",BS_AUTORADIOBUTTON,31,150,38,10
+    EDITTEXT        IDC_FILEEDIT,73,126,150,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Open File",IDOPENFILE,235,126,50,14
+END
+
+IDD_SERVDIA DIALOGEX 0, 0, 285, 87
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Server Setup"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,168,65,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,222,65,50,14
+    EDITTEXT        IDC_UDPPORTEDIT,81,13,48,14,ES_AUTOHSCROLL
+    LTEXT           "UDP Server Port",IDC_UDPPORTLABEL,18,14,58,8
+    LTEXT           "Save To ",IDC_SAVEFILELABEL,18,43,37,8
+    EDITTEXT        IDC_SAVEFILEEDIT,61,40,150,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Open File",IDOPENSAVEFILE,222,40,50,14
+    EDITTEXT        IDC_TCPPORTEDIT,222,12,48,14,ES_AUTOHSCROLL
+    LTEXT           "TCP Server Port",IDC_TCPPORTLABEL,158,14,58,8
+END
